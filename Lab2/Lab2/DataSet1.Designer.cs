@@ -49,6 +49,7 @@ namespace Lab2 {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -60,6 +61,9 @@ namespace Lab2 {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -89,6 +93,7 @@ namespace Lab2 {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -180,6 +185,7 @@ namespace Lab2 {
         public override global::System.Data.DataSet Clone() {
             DataSet1 cln = ((DataSet1)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -287,7 +293,7 @@ namespace Lab2 {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDEPARTMENT = new DEPARTMENTDataTable();
             base.Tables.Add(this.tableDEPARTMENT);
-            this.tablePERSONAL = new PERSONALDataTable();
+            this.tablePERSONAL = new PERSONALDataTable(false);
             base.Tables.Add(this.tablePERSONAL);
             this.tableCOURSE = new COURSEDataTable();
             base.Tables.Add(this.tableCOURSE);
@@ -384,6 +390,12 @@ namespace Lab2 {
             }
             xs.Add(dsSchema);
             return type;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitExpressions() {
+            this.PERSONAL.FIOColumn.Expression = "LNAME+ \'\' +FNAME+\'\'+SNAME";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -717,12 +729,23 @@ namespace Lab2 {
             
             private global::System.Data.DataColumn columnMARITAL;
             
+            private global::System.Data.DataColumn columnFIO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PERSONALDataTable() {
+            public PERSONALDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PERSONALDataTable(bool initExpressions) {
                 this.TableName = "PERSONAL";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -848,6 +871,14 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FIOColumn {
+                get {
+                    return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -883,6 +914,32 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PERSONALRow AddPERSONALRow(int NUM, string LNAME, string FNAME, string SNAME, System.DateTime BDAY, string POST, string ADRES, string PHONE, decimal PAY, DEPARTMENTRow parentDEPARTMENTRowByFK_DEP, short CHILD, string MARITAL, string FIO) {
+                PERSONALRow rowPERSONALRow = ((PERSONALRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NUM,
+                        LNAME,
+                        FNAME,
+                        SNAME,
+                        BDAY,
+                        POST,
+                        ADRES,
+                        PHONE,
+                        PAY,
+                        null,
+                        CHILD,
+                        MARITAL,
+                        FIO};
+                if ((parentDEPARTMENTRowByFK_DEP != null)) {
+                    columnValuesArray[9] = parentDEPARTMENTRowByFK_DEP[0];
+                }
+                rowPERSONALRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPERSONALRow);
+                return rowPERSONALRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PERSONALRow AddPERSONALRow(int NUM, string LNAME, string FNAME, string SNAME, System.DateTime BDAY, string POST, string ADRES, string PHONE, decimal PAY, DEPARTMENTRow parentDEPARTMENTRowByFK_DEP, short CHILD, string MARITAL) {
                 PERSONALRow rowPERSONALRow = ((PERSONALRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -897,7 +954,8 @@ namespace Lab2 {
                         PAY,
                         null,
                         CHILD,
-                        MARITAL};
+                        MARITAL,
+                        null};
                 if ((parentDEPARTMENTRowByFK_DEP != null)) {
                     columnValuesArray[9] = parentDEPARTMENTRowByFK_DEP[0];
                 }
@@ -942,6 +1000,7 @@ namespace Lab2 {
                 this.columnDEP_CODE = base.Columns["DEP_CODE"];
                 this.columnCHILD = base.Columns["CHILD"];
                 this.columnMARITAL = base.Columns["MARITAL"];
+                this.columnFIO = base.Columns["FIO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,6 +1030,8 @@ namespace Lab2 {
                 base.Columns.Add(this.columnCHILD);
                 this.columnMARITAL = new global::System.Data.DataColumn("MARITAL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMARITAL);
+                this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIO);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNUM}, true));
                 this.columnNUM.AllowDBNull = false;
@@ -982,6 +1043,7 @@ namespace Lab2 {
                 this.columnADRES.MaxLength = 200;
                 this.columnPHONE.MaxLength = 12;
                 this.columnMARITAL.MaxLength = 20;
+                this.columnFIO.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1000,6 +1062,12 @@ namespace Lab2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(PERSONALRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.FIOColumn.Expression = "LNAME+ \'\' +FNAME+\'\'+SNAME";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2057,6 +2125,22 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FIO {
+                get {
+                    try {
+                        return ((string)(this[this.tablePERSONAL.FIOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FIO\' in table \'PERSONAL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePERSONAL.FIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DEPARTMENTRow DEPARTMENTRow {
                 get {
                     return ((DEPARTMENTRow)(this.GetParentRow(this.Table.ParentRelations["FK_DEP"])));
@@ -2196,6 +2280,18 @@ namespace Lab2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMARITALNull() {
                 this[this.tablePERSONAL.MARITALColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFIONull() {
+                return this.IsNull(this.tablePERSONAL.FIOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFIONull() {
+                this[this.tablePERSONAL.FIOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3851,7 +3947,7 @@ namespace Lab2.DataSet1TableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.PERSONALDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.PERSONALDataTable dataTable = new DataSet1.PERSONALDataTable();
+            DataSet1.PERSONALDataTable dataTable = new DataSet1.PERSONALDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

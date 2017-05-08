@@ -40,10 +40,12 @@
             System.Windows.Forms.Label pAYLabel;
             System.Windows.Forms.Label mARITALLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataSet1 = new Lab2.DataSet1();
             this.pERSONALBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pERSONALTableAdapter = new Lab2.DataSet1TableAdapters.PERSONALTableAdapter();
             this.tableAdapterManager = new Lab2.DataSet1TableAdapters.TableAdapterManager();
+            this.tRAININGTableAdapter = new Lab2.DataSet1TableAdapters.TRAININGTableAdapter();
             this.pERSONALBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -59,7 +61,7 @@
             this.pERSONALBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.pERSONALDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +89,6 @@
             this.dataSet11 = new Lab2.DataSet1();
             this.cOURSETableAdapter = new Lab2.DataSet1TableAdapters.COURSETableAdapter();
             this.tRAININGBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tRAININGTableAdapter = new Lab2.DataSet1TableAdapters.TRAININGTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -105,12 +106,11 @@
             this.tRAININGDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DOCUMENT = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             nUMLabel = new System.Windows.Forms.Label();
             lNAMELabel = new System.Windows.Forms.Label();
             fNAMELabel = new System.Windows.Forms.Label();
@@ -250,6 +250,10 @@
             this.tableAdapterManager.TRAININGTableAdapter = this.tRAININGTableAdapter;
             this.tableAdapterManager.UpdateOrder = Lab2.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // tRAININGTableAdapter
+            // 
+            this.tRAININGTableAdapter.ClearBeforeFill = true;
+            // 
             // pERSONALBindingNavigator
             // 
             this.pERSONALBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -277,7 +281,7 @@
             this.pERSONALBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pERSONALBindingNavigator.Name = "pERSONALBindingNavigator";
             this.pERSONALBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pERSONALBindingNavigator.Size = new System.Drawing.Size(1252, 25);
+            this.pERSONALBindingNavigator.Size = new System.Drawing.Size(1023, 25);
             this.pERSONALBindingNavigator.TabIndex = 1;
             this.pERSONALBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -386,14 +390,14 @@
             this.pERSONALDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pERSONALDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
+            this.FIO});
             this.pERSONALDataGridView.DataSource = this.pERSONALBindingSource;
             this.pERSONALDataGridView.Location = new System.Drawing.Point(12, 55);
             this.pERSONALDataGridView.MultiSelect = false;
             this.pERSONALDataGridView.Name = "pERSONALDataGridView";
             this.pERSONALDataGridView.ReadOnly = true;
             this.pERSONALDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.pERSONALDataGridView.Size = new System.Drawing.Size(242, 432);
+            this.pERSONALDataGridView.Size = new System.Drawing.Size(246, 533);
             this.pERSONALDataGridView.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -403,12 +407,12 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // FIO
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "LNAME";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Фамилия";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.FIO.DataPropertyName = "FIO";
+            this.FIO.HeaderText = "Сотрудник";
+            this.FIO.Name = "FIO";
+            this.FIO.ReadOnly = true;
             // 
             // menuStrip1
             // 
@@ -417,7 +421,7 @@
             this.выходToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1252, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1023, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -622,17 +626,13 @@
             this.tRAININGBindingSource.DataMember = "FK_TRAINING_1";
             this.tRAININGBindingSource.DataSource = this.pERSONALBindingSource;
             // 
-            // tRAININGTableAdapter
-            // 
-            this.tRAININGTableAdapter.ClearBeforeFill = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.bindingNavigator1);
             this.groupBox1.Controls.Add(this.tRAININGDataGridView);
-            this.groupBox1.Location = new System.Drawing.Point(309, 372);
+            this.groupBox1.Location = new System.Drawing.Point(264, 320);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(649, 285);
+            this.groupBox1.Size = new System.Drawing.Size(735, 285);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -640,7 +640,7 @@
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.toolStripButton1;
-            this.bindingNavigator1.BindingSource = this.pERSONALBindingSource;
+            this.bindingNavigator1.BindingSource = this.tRAININGBindingSource;
             this.bindingNavigator1.CountItem = this.toolStripLabel1;
             this.bindingNavigator1.CountItemFormat = "из {0}";
             this.bindingNavigator1.DeleteItem = this.toolStripButton2;
@@ -664,9 +664,10 @@
             this.bindingNavigator1.MovePreviousItem = this.toolStripButton4;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.toolStripTextBox1;
-            this.bindingNavigator1.Size = new System.Drawing.Size(643, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(729, 25);
             this.bindingNavigator1.TabIndex = 2;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
             // 
             // toolStripButton1
             // 
@@ -772,71 +773,82 @@
             this.tRAININGDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
+            this.DOCUMENT,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.tRAININGDataGridView.DataSource = this.tRAININGBindingSource;
             this.tRAININGDataGridView.Location = new System.Drawing.Point(22, 45);
             this.tRAININGDataGridView.Name = "tRAININGDataGridView";
-            this.tRAININGDataGridView.Size = new System.Drawing.Size(612, 220);
+            this.tRAININGDataGridView.Size = new System.Drawing.Size(707, 220);
             this.tRAININGDataGridView.TabIndex = 0;
+            this.tRAININGDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tRAININGDataGridView_CellFormating);
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "DATE_BEG";
-            this.dataGridViewTextBoxColumn3.HeaderText = "DATE_BEG";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Дата начала курсов";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "DATE_END";
-            this.dataGridViewTextBoxColumn4.HeaderText = "DATE_END";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Дата окончания курсов";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // dataGridViewTextBoxColumn5
+            // DOCUMENT
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "DOCUMENT";
-            this.dataGridViewTextBoxColumn5.HeaderText = "DOCUMENT";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.DOCUMENT.DataPropertyName = "DOCUMENT";
+            this.DOCUMENT.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.DOCUMENT.HeaderText = "документ";
+            this.DOCUMENT.Items.AddRange(new object[] {
+            "диплом",
+            "Свидетельсто"});
+            this.DOCUMENT.Name = "DOCUMENT";
+            this.DOCUMENT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DOCUMENT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "LENGHT_CRS";
-            this.dataGridViewTextBoxColumn6.HeaderText = "LENGHT_CRS";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Кол-во часов";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "COST";
-            this.dataGridViewTextBoxColumn7.HeaderText = "COST";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Цена";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "FULLTIME";
-            this.dataGridViewTextBoxColumn8.HeaderText = "FULLTIME";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Очные";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "PERS_CODE";
-            this.dataGridViewTextBoxColumn9.HeaderText = "PERS_CODE";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dataGridViewTextBoxColumn10
             // 
             this.dataGridViewTextBoxColumn10.DataPropertyName = "COURSE_CODE";
-            this.dataGridViewTextBoxColumn10.HeaderText = "COURSE_CODE";
+            this.dataGridViewTextBoxColumn10.DataSource = this.COURSEBindingSource;
+            this.dataGridViewTextBoxColumn10.DisplayMember = "NAME";
+            this.dataGridViewTextBoxColumn10.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.dataGridViewTextBoxColumn10.HeaderText = "Курс";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn10.ValueMember = "ID";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1252, 677);
+            this.ClientSize = new System.Drawing.Size(1023, 600);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
@@ -912,8 +924,6 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton pERSONALBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView pERSONALDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отделыToolStripMenuItem;
@@ -957,15 +967,16 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.DataGridView tRAININGDataGridView;
+        public DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewComboBoxColumn DOCUMENT;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        public DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn10;
     }
 }
 

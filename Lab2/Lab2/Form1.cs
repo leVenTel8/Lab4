@@ -92,11 +92,35 @@ namespace Lab2
 
         private void toolStripButton7_Click_1(object sender, EventArgs e)
         {
+            try
+            { 
             this.Validate();
 
             this.tRAININGBindingSource.EndEdit();
 
             this.tableAdapterManager.UpdateAll(this.dataSet1);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+                //Заново запомним DataSet данными из таблицы Department
+                this.dEPARTMENTTableAdapter.Fill(this.dataSet1.DEPARTMENT);
+            }
+
+        }
+
+        private void tRAININGDataGridView_CellFormating(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if((tRAININGDataGridView.Rows[e.RowIndex].Cells["DOCUMENT"].Value != null) &&
+                (tRAININGDataGridView.Rows[e.RowIndex].Cells["DOCUMENT"].Value.ToString() == "диплом"))
+                e.CellStyle.BackColor = Color.LightGreen;
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
         }
     }
 }
