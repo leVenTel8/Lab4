@@ -65,6 +65,7 @@
             this.отделыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.образованиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.курсыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nUMTextBox = new System.Windows.Forms.TextBox();
             this.lNAMETextBox = new System.Windows.Forms.TextBox();
@@ -82,6 +83,34 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dEPARTMENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dEPARTMENTTableAdapter = new Lab2.DataSet1TableAdapters.DEPARTMENTTableAdapter();
+            this.COURSEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet11 = new Lab2.DataSet1();
+            this.cOURSETableAdapter = new Lab2.DataSet1TableAdapters.COURSETableAdapter();
+            this.tRAININGBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tRAININGTableAdapter = new Lab2.DataSet1TableAdapters.TRAININGTableAdapter();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.tRAININGDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nUMLabel = new System.Windows.Forms.Label();
             lNAMELabel = new System.Windows.Forms.Label();
             fNAMELabel = new System.Windows.Forms.Label();
@@ -99,6 +128,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pERSONALDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COURSEBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRAININGBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRAININGDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // nUMLabel
@@ -167,7 +203,7 @@
             // pHONELabel
             // 
             pHONELabel.AutoSize = true;
-            pHONELabel.Location = new System.Drawing.Point(306, 323);
+            pHONELabel.Location = new System.Drawing.Point(698, 88);
             pHONELabel.Name = "pHONELabel";
             pHONELabel.Size = new System.Drawing.Size(55, 13);
             pHONELabel.TabIndex = 17;
@@ -176,7 +212,7 @@
             // pAYLabel
             // 
             pAYLabel.AutoSize = true;
-            pAYLabel.Location = new System.Drawing.Point(307, 349);
+            pAYLabel.Location = new System.Drawing.Point(699, 114);
             pAYLabel.Name = "pAYLabel";
             pAYLabel.Size = new System.Drawing.Size(42, 13);
             pAYLabel.TabIndex = 19;
@@ -185,7 +221,7 @@
             // mARITALLabel
             // 
             mARITALLabel.AutoSize = true;
-            mARITALLabel.Location = new System.Drawing.Point(306, 391);
+            mARITALLabel.Location = new System.Drawing.Point(698, 156);
             mARITALLabel.Name = "mARITALLabel";
             mARITALLabel.Size = new System.Drawing.Size(66, 13);
             mARITALLabel.TabIndex = 21;
@@ -208,8 +244,10 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.COURSETableAdapter = null;
             this.tableAdapterManager.DEPARTMENTTableAdapter = null;
             this.tableAdapterManager.PERSONALTableAdapter = this.pERSONALTableAdapter;
+            this.tableAdapterManager.TRAININGTableAdapter = this.tRAININGTableAdapter;
             this.tableAdapterManager.UpdateOrder = Lab2.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // pERSONALBindingNavigator
@@ -239,7 +277,7 @@
             this.pERSONALBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.pERSONALBindingNavigator.Name = "pERSONALBindingNavigator";
             this.pERSONALBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.pERSONALBindingNavigator.Size = new System.Drawing.Size(794, 25);
+            this.pERSONALBindingNavigator.Size = new System.Drawing.Size(1252, 25);
             this.pERSONALBindingNavigator.TabIndex = 1;
             this.pERSONALBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -379,7 +417,7 @@
             this.выходToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(794, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1252, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -388,7 +426,8 @@
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.отделыToolStripMenuItem,
             this.должностиToolStripMenuItem,
-            this.образованиеToolStripMenuItem});
+            this.образованиеToolStripMenuItem,
+            this.курсыToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -396,7 +435,7 @@
             // отделыToolStripMenuItem
             // 
             this.отделыToolStripMenuItem.Name = "отделыToolStripMenuItem";
-            this.отделыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.отделыToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.отделыToolStripMenuItem.Text = "Отделы";
             this.отделыToolStripMenuItem.Click += new System.EventHandler(this.отделыToolStripMenuItem_Click);
             // 
@@ -411,6 +450,13 @@
             this.образованиеToolStripMenuItem.Name = "образованиеToolStripMenuItem";
             this.образованиеToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.образованиеToolStripMenuItem.Text = "Образование";
+            // 
+            // курсыToolStripMenuItem
+            // 
+            this.курсыToolStripMenuItem.Name = "курсыToolStripMenuItem";
+            this.курсыToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.курсыToolStripMenuItem.Text = "Курсы";
+            this.курсыToolStripMenuItem.Click += new System.EventHandler(this.курсыToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
@@ -479,7 +525,7 @@
             // pHONETextBox
             // 
             this.pHONETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pERSONALBindingSource, "PHONE", true));
-            this.pHONETextBox.Location = new System.Drawing.Point(407, 320);
+            this.pHONETextBox.Location = new System.Drawing.Point(799, 85);
             this.pHONETextBox.Name = "pHONETextBox";
             this.pHONETextBox.Size = new System.Drawing.Size(200, 20);
             this.pHONETextBox.TabIndex = 18;
@@ -487,7 +533,7 @@
             // pAYTextBox
             // 
             this.pAYTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pERSONALBindingSource, "PAY", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
-            this.pAYTextBox.Location = new System.Drawing.Point(407, 346);
+            this.pAYTextBox.Location = new System.Drawing.Point(799, 111);
             this.pAYTextBox.Name = "pAYTextBox";
             this.pAYTextBox.Size = new System.Drawing.Size(200, 20);
             this.pAYTextBox.TabIndex = 20;
@@ -501,7 +547,7 @@
             "замужем",
             "не женат",
             "не замужем"});
-            this.mARITALComboBox.Location = new System.Drawing.Point(407, 388);
+            this.mARITALComboBox.Location = new System.Drawing.Point(799, 153);
             this.mARITALComboBox.Name = "mARITALComboBox";
             this.mARITALComboBox.Size = new System.Drawing.Size(121, 21);
             this.mARITALComboBox.TabIndex = 22;
@@ -510,7 +556,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.pERSONALBindingSource, "CHILD", true));
-            this.checkBox1.Location = new System.Drawing.Point(407, 415);
+            this.checkBox1.Location = new System.Drawing.Point(799, 180);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(80, 17);
             this.checkBox1.TabIndex = 23;
@@ -520,7 +566,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(307, 415);
+            this.label1.Location = new System.Drawing.Point(699, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 24;
@@ -529,7 +575,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(306, 378);
+            this.label2.Location = new System.Drawing.Point(698, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 25;
@@ -542,7 +588,7 @@
             this.comboBox1.DisplayMember = "NAME";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(407, 453);
+            this.comboBox1.Location = new System.Drawing.Point(799, 218);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 26;
@@ -557,11 +603,241 @@
             // 
             this.dEPARTMENTTableAdapter.ClearBeforeFill = true;
             // 
+            // COURSEBindingSource
+            // 
+            this.COURSEBindingSource.DataMember = "COURSE";
+            this.COURSEBindingSource.DataSource = this.dataSet11;
+            // 
+            // dataSet11
+            // 
+            this.dataSet11.DataSetName = "DataSet1";
+            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cOURSETableAdapter
+            // 
+            this.cOURSETableAdapter.ClearBeforeFill = true;
+            // 
+            // tRAININGBindingSource
+            // 
+            this.tRAININGBindingSource.DataMember = "FK_TRAINING_1";
+            this.tRAININGBindingSource.DataSource = this.pERSONALBindingSource;
+            // 
+            // tRAININGTableAdapter
+            // 
+            this.tRAININGTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.bindingNavigator1);
+            this.groupBox1.Controls.Add(this.tRAININGDataGridView);
+            this.groupBox1.Location = new System.Drawing.Point(309, 372);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(649, 285);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.toolStripButton1;
+            this.bindingNavigator1.BindingSource = this.pERSONALBindingSource;
+            this.bindingNavigator1.CountItem = this.toolStripLabel1;
+            this.bindingNavigator1.CountItemFormat = "из {0}";
+            this.bindingNavigator1.DeleteItem = this.toolStripButton2;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripSeparator1,
+            this.toolStripTextBox1,
+            this.toolStripLabel1,
+            this.toolStripSeparator2,
+            this.toolStripButton5,
+            this.toolStripButton6,
+            this.toolStripSeparator3,
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton7});
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 16);
+            this.bindingNavigator1.MoveFirstItem = this.toolStripButton3;
+            this.bindingNavigator1.MoveLastItem = this.toolStripButton6;
+            this.bindingNavigator1.MoveNextItem = this.toolStripButton5;
+            this.bindingNavigator1.MovePreviousItem = this.toolStripButton4;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.toolStripTextBox1;
+            this.bindingNavigator1.Size = new System.Drawing.Size(643, 25);
+            this.bindingNavigator1.TabIndex = 2;
+            this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Add new";
+            this.toolStripButton1.ToolTipText = "Добавить новую запись";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(36, 22);
+            this.toolStripLabel1.Text = "из {0}";
+            this.toolStripLabel1.ToolTipText = "Total number of items";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Delete";
+            this.toolStripButton2.ToolTipText = "Удалить выбранную запись";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Move first";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "Move previous";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.AccessibleName = "Position";
+            this.toolStripTextBox1.AutoSize = false;
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
+            this.toolStripTextBox1.Text = "0";
+            this.toolStripTextBox1.ToolTipText = "Current position";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "Move next";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "Move last";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton7.Text = "Save Data";
+            this.toolStripButton7.ToolTipText = "Сохранить изменения";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click_1);
+            // 
+            // tRAININGDataGridView
+            // 
+            this.tRAININGDataGridView.AutoGenerateColumns = false;
+            this.tRAININGDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tRAININGDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
+            this.tRAININGDataGridView.DataSource = this.tRAININGBindingSource;
+            this.tRAININGDataGridView.Location = new System.Drawing.Point(22, 45);
+            this.tRAININGDataGridView.Name = "tRAININGDataGridView";
+            this.tRAININGDataGridView.Size = new System.Drawing.Size(612, 220);
+            this.tRAININGDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "DATE_BEG";
+            this.dataGridViewTextBoxColumn3.HeaderText = "DATE_BEG";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DATE_END";
+            this.dataGridViewTextBoxColumn4.HeaderText = "DATE_END";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "DOCUMENT";
+            this.dataGridViewTextBoxColumn5.HeaderText = "DOCUMENT";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "LENGHT_CRS";
+            this.dataGridViewTextBoxColumn6.HeaderText = "LENGHT_CRS";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "COST";
+            this.dataGridViewTextBoxColumn7.HeaderText = "COST";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "FULLTIME";
+            this.dataGridViewTextBoxColumn8.HeaderText = "FULLTIME";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "PERS_CODE";
+            this.dataGridViewTextBoxColumn9.HeaderText = "PERS_CODE";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "COURSE_CODE";
+            this.dataGridViewTextBoxColumn10.HeaderText = "COURSE_CODE";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 507);
+            this.ClientSize = new System.Drawing.Size(1252, 677);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -603,6 +879,15 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dEPARTMENTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.COURSEBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRAININGBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRAININGDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,7 +898,6 @@
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource pERSONALBindingSource;
         private DataSet1TableAdapters.PERSONALTableAdapter pERSONALTableAdapter;
-        private DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator pERSONALBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -652,6 +936,36 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.BindingSource dEPARTMENTBindingSource;
         private DataSet1TableAdapters.DEPARTMENTTableAdapter dEPARTMENTTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem курсыToolStripMenuItem;
+        private System.Windows.Forms.BindingSource COURSEBindingSource;
+        private DataSet1 dataSet11;
+        private DataSet1TableAdapters.COURSETableAdapter cOURSETableAdapter;
+        private System.Windows.Forms.BindingSource tRAININGBindingSource;
+        private DataSet1TableAdapters.TRAININGTableAdapter tRAININGTableAdapter;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.DataGridView tRAININGDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        public DataSet1TableAdapters.TableAdapterManager tableAdapterManager;
     }
 }
 

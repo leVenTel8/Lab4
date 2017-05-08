@@ -27,6 +27,10 @@ namespace Lab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet1.TRAINING' table. You can move, or remove it, as needed.
+            this.tRAININGTableAdapter.Fill(this.dataSet1.TRAINING);
+            // TODO: This line of code loads data into the 'dataSet11.COURSE' table. You can move, or remove it, as needed.
+            this.cOURSETableAdapter.Fill(this.dataSet11.COURSE);
             // TODO: This line of code loads data into the 'dataSet1.DEPARTMENT' table. You can move, or remove it, as needed.
             this.dEPARTMENTTableAdapter.Fill(this.dataSet1.DEPARTMENT);
             // TODO: This line of code loads data into the 'dataSet1.PERSONAL' table. You can move, or remove it, as needed.
@@ -58,6 +62,41 @@ namespace Lab2
             //экране всех изменений, которые мысделали в окне справочника)
             dEPARTMENTBindingSource.ResetBindings(false);
             pERSONALBindingSource.ResetBindings(false);
+        }
+
+        private void курсыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 frm_course = new Form3();
+            frm_course.ShowDialog();
+
+            this.cOURSETableAdapter.Fill(this.dataSet1.COURSE);
+
+
+            COURSEBindingSource.ResetBindings(false);
+            pERSONALBindingSource.ResetBindings(false);
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+
+            this.tRAININGBindingSource.EndEdit();
+
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
+        }
+
+        private void tRAININGBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton7_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+
+            this.tRAININGBindingSource.EndEdit();
+
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
         }
     }
 }
